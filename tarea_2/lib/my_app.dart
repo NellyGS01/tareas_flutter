@@ -28,6 +28,15 @@ class Botonesyotros extends StatefulWidget {
 }
 
 class _Botonesyotros extends State<Botonesyotros> {
+  bool standardSelected = false;
+  Color _iconColor = Colors.black;
+
+  bool standardSelected2 = false;
+  Color _iconColor2 = Colors.black;
+
+  bool standardSelected3 = false;
+  Color _iconColor3 = Colors.black;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,36 +62,90 @@ class _Botonesyotros extends State<Botonesyotros> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                children: [
-                  IconButton(
-                    iconSize: 48,
-                    onPressed: () {},
-                    icon: const Icon(Icons.mail),
-                  ),
-                  const Text("Correo"),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    iconSize: 48,
-                    onPressed: () {},
-                    icon: const Icon(Icons.phone),
-                  ),
-                  const Text("Llamada"),
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    iconSize: 48,
-                    onPressed: () {},
-                    icon: const Icon(Icons.directions),
-                  ),
-                  const Text("Ruta"),
-                ],
-              ),
+              Column(children: <Widget>[
+                IconButton(
+                  iconSize: 48,
+                  isSelected: standardSelected,
+                  icon: Icon(Icons.mail, color: _iconColor),
+                  onPressed: () {
+                    setState(() {
+                      standardSelected = !standardSelected;
+                      if (standardSelected == false) {
+                        _iconColor = Colors.cyan;
+                      } else {
+                        _iconColor = Colors.black;
+                      }
+                    });
+                    final snackBar = SnackBar(
+                      content: const Text(
+                          'Puedes encontrar comida en sus cafeterías'),
+                      action: SnackBarAction(
+                        label: 'Ok',
+                        onPressed: () {},
+                      ),
+                    );
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                ),
+                const Text("Mail"),
+              ]),
+              Column(children: <Widget>[
+                IconButton(
+                  iconSize: 48,
+                  isSelected: standardSelected2,
+                  icon: Icon(Icons.phone, color: _iconColor2),
+                  onPressed: () {
+                    setState(() {
+                      standardSelected2 = !standardSelected2;
+                      if (standardSelected2 == false) {
+                        _iconColor2 = Colors.cyan;
+                      } else {
+                        _iconColor2 = Colors.black;
+                      }
+                    });
+                    final snackBar = SnackBar(
+                      content:
+                          const Text('Puedes pedir información en rectoría'),
+                      action: SnackBarAction(
+                        label: 'Ok',
+                        onPressed: () {},
+                      ),
+                    );
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                ),
+                const Text("Llamada"),
+              ]),
+              Column(children: <Widget>[
+                IconButton(
+                  iconSize: 48,
+                  isSelected: standardSelected3,
+                  icon: Icon(Icons.directions, color: _iconColor3),
+                  onPressed: () {
+                    setState(() {
+                      standardSelected3 = !standardSelected3;
+                      if (standardSelected3 == false) {
+                        _iconColor3 = Colors.cyan;
+                      } else {
+                        _iconColor3 = Colors.black;
+                      }
+                    });
+                    final snackBar = SnackBar(
+                      content: const Text(
+                          'Se encuentra ubicado en Periférico Sur 8585'),
+                      action: SnackBarAction(
+                        label: 'Ok',
+                        onPressed: () {},
+                      ),
+                    );
+
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                ),
+                const Text("Ruta"),
+              ])
             ],
           ),
           const SizedBox(
