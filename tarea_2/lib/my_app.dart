@@ -28,6 +28,8 @@ class Botonesyotros extends StatefulWidget {
 }
 
 class _Botonesyotros extends State<Botonesyotros> {
+  int _counter = 0;
+
   bool standardSelected = false;
   Color _iconColor = Colors.black;
 
@@ -37,6 +39,12 @@ class _Botonesyotros extends State<Botonesyotros> {
   bool standardSelected3 = false;
   Color _iconColor3 = Colors.black;
 
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,18 +53,33 @@ class _Botonesyotros extends State<Botonesyotros> {
         children: [
           Image.network(
               "https://cruce.iteso.mx/wp-content/uploads/sites/123/2018/04/Portada-2-e1525031912445.jpg"),
+          const SizedBox(
+            height: 10,
+          ),
           ListTile(
             title: const Text(
-              "El ITESO, hhhhhg",
+              "El ITESO, Universidad Jesuita de Guadalajara",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: const Text(
               "San Pedro Tlaquepaque, Jal",
               style: TextStyle(fontWeight: FontWeight.w200),
             ),
-            trailing: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.thumb_up),
+            trailing: Column(
+              children: [
+                Expanded(
+                  child: IconButton(
+                    iconSize: 25,
+                    onPressed: _incrementCounter,
+                    icon: const Icon(Icons.thumb_up, color: Colors.indigo),
+                  ),
+                ),
+                Text(
+                  '$_counter',
+                  style: const TextStyle(
+                      height: 0, fontSize: 15, color: Colors.indigo),
+                ),
+              ],
             ),
           ),
           Row(
@@ -149,7 +172,7 @@ class _Botonesyotros extends State<Botonesyotros> {
             ],
           ),
           const SizedBox(
-            height: 64,
+            height: 40,
           ),
           const Text(
             '''El ITESO, Universidad Jesuita de Guadalajara (Instituto Tecnológico y de Estudios Superiores de Occidente) es una universidad privada ubicada en la Zona Metropolitana de Guadalajara, Jalisco, México, fundada en el año 1957.

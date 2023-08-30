@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:tarea_2/main.dart';
 import 'package:tarea_2/my_app.dart';
 
 void main() {
