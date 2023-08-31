@@ -1,137 +1,118 @@
+---------EJEMPLO DE SWITCH-------------------------------------------------------- 
 import 'package:flutter/material.dart';
 
-/// Flutter code sample for [TextField].
+/// Flutter code sample for [Switch].
 
-void main() => runApp(const MyApp());
+void main() => runApp(const SwitchApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: TextFieldExample(),
-    );
-  }
-}
-
-class TextFieldExample extends StatefulWidget {
-  const TextFieldExample({super.key});
-
-  @override
-  State<TextFieldExample> createState() => _TextFieldExampleState();
-}
-
-class _TextFieldExampleState extends State<TextFieldExample> {
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+class SwitchApp extends StatelessWidget {
+  const SwitchApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: TextField(
-          controller: _controller,
-          onSubmitted: (String value) async {
-            await showDialog<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: const Text('Thanks!'),
-                  content: Text(
-                      'You typed "$value", which has length ${value.characters.length}.'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('OK'),
-                    ),
-                  ],
-                );
-              },
-            );
-          },
+    return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Switch Sample')),
+        body: const Center(
+          child: SwitchExample(),
         ),
       ),
     );
   }
 }
 
-
-class Botonesyotros extends StatefulWidget {
-  const Botonesyotros({super.key});
+class SwitchExample extends StatefulWidget {
+  const SwitchExample({super.key});
 
   @override
-  State<Botonesyotros> createState() => _Botonesyotros();
+  State<SwitchExample> createState() => _SwitchExampleState();
 }
 
-class _Botonesyotros extends State<Botonesyotros> {
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+class _SwitchExampleState extends State<SwitchExample> {
+  bool light = true;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 17, 129, 19),
-        title: const Text(
-          'Tip Time',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      body: const Column(
-        children: <Widget>[Row(
-
-        ), Row(), Row()],
-      ),
+    return Switch(
+      // This bool value toggles the switch.
+      value: light,
+      activeColor: Colors.red,
+      onChanged: (bool value) {
+        // This is called when the user toggles the switch.
+        setState(() {
+          light = value;
+        });
+      },
     );
   }
 }
 
 
-child: TextField(
-          controller: _controller,
-          onSubmitted: (String value) async {
-            await showDialog<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: const Text('Thanks!'),
-                  content: Text(
-                      'You typed "$value", which has length ${value.characters.length}.'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('OK'),
-                    ),
-                  ],
-                );
-              },
-            );
-          },
+---------EJEMPLO DE RADIO CLASS-------------------------------------------------------- 
+import 'package:flutter/material.dart';
+
+/// Flutter code sample for [Radio].
+
+void main() => runApp(const RadioExampleApp());
+
+class RadioExampleApp extends StatelessWidget {
+  const RadioExampleApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Radio Sample')),
+        body: const Center(
+          child: RadioExample(),
         ),
+      ),
+    );
+  }
+}
+
+enum SingingCharacter { lafayette, jefferson }
+
+class RadioExample extends StatefulWidget {
+  const RadioExample({super.key});
+
+  @override
+  State<RadioExample> createState() => _RadioExampleState();
+}
+
+class _RadioExampleState extends State<RadioExample> {
+  SingingCharacter? _character = SingingCharacter.lafayette;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        ListTile(
+          title: const Text('Lafayette'),
+          leading: Radio<SingingCharacter>(
+            value: SingingCharacter.lafayette,
+            groupValue: _character,
+            onChanged: (SingingCharacter? value) {
+              setState(() {
+                _character = value;
+              });
+            },
+          ),
+        ),
+        ListTile(
+          title: const Text('Thomas Jefferson'),
+          leading: Radio<SingingCharacter>(
+            value: SingingCharacter.jefferson,
+            groupValue: _character,
+            onChanged: (SingingCharacter? value) {
+              setState(() {
+                _character = value;
+              });
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}

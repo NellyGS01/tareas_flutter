@@ -10,60 +10,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: TextFieldExample(),
+      home: Botonesyotros(),
     );
   }
 }
 
-class TextFieldExample extends StatefulWidget {
-  const TextFieldExample({super.key});
+class Botonesyotros extends StatefulWidget {
+  const Botonesyotros({super.key});
 
   @override
-  State<TextFieldExample> createState() => _TextFieldExampleState();
+  State<Botonesyotros> createState() => _MainApp();
 }
 
-class _TextFieldExampleState extends State<TextFieldExample> {
-  late TextEditingController _controller;
+class InputsyOtros extends StatefulWidget {
+  const InputsyOtros({super.key});
 
   @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-  }
+  State<Botonesyotros> createState() => _MainApp();
+}
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class _MainApp extends State<Botonesyotros> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: TextField(
-          controller: _controller,
-          onSubmitted: (String value) async {
-            await showDialog<void>(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: const Text('Thanks!'),
-                  content: Text(
-                      'You typed "$value", which has length ${value.characters.length}.'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('OK'),
-                    ),
-                  ],
-                );
-              },
-            );
-          },
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 17, 129, 19),
+        title: const Text(
+          'Tip Time',
+          style: TextStyle(color: Colors.white),
         ),
+      ),
+      body: const Column(
+        children: <Widget>[Row(), Row(), Row()],
       ),
     );
   }
