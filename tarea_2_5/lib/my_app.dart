@@ -22,14 +22,30 @@ class Botonesyotros extends StatefulWidget {
   State<Botonesyotros> createState() => _MainApp();
 }
 
-class InputsyOtros extends StatefulWidget {
-  const InputsyOtros({super.key});
+class _MainApp extends State<Botonesyotros> {
+  var dineroController = TextEditingController();
+  bool? genero;
+
+  var total = '';
+
+  //final String _15 = '''Tienes que pagar esto de propina con el 15%''';
+
+  void _setText() {
+    setState(() {
+      double propina = double.parse(dineroController.text);
+      propina = propina * 2;
+
+      total = propina.toString();
+    });
+  }
 
   @override
-  State<Botonesyotros> createState() => _MainApp();
-}
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    dineroController.dispose();
+    super.dispose();
+  }
 
-class _MainApp extends State<Botonesyotros> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,8 +56,36 @@ class _MainApp extends State<Botonesyotros> {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: const Column(
-        children: <Widget>[Row(), Row(), Row()],
+      body: Padding(
+        padding: const EdgeInsets.only(left: 8, right: 8, top: 12),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      genero = false;
+                      setState(() {});
+                    },
+                    icon: Icon(
+                      Icons.male,
+                      color: genero == false ? Colors.indigo : Colors.grey,
+                    ))
+              ],
+            ),
+            TextField(
+              controller: dineroController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                  icon: Icon(Icons.home),
+                  labelText: "Ingresa el costo total",
+                  border: OutlineInputBorder()),
+            ),
+            MaterialButton(onPressed: _setText, child: const Text("Calcular")),
+            Text(total)
+          ],
+        ),
       ),
     );
   }
