@@ -45,6 +45,12 @@ class _Botonesyotros extends State<Botonesyotros> {
     });
   }
 
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -68,10 +74,14 @@ class _Botonesyotros extends State<Botonesyotros> {
             trailing: Column(
               children: [
                 Expanded(
-                  child: IconButton(
-                    iconSize: 25,
-                    onPressed: _incrementCounter,
-                    icon: const Icon(Icons.thumb_up, color: Colors.indigo),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        iconSize: 25,
+                        onPressed: _incrementCounter,
+                        icon: const Icon(Icons.thumb_up, color: Colors.indigo),
+                      ),
+                    ],
                   ),
                 ),
                 Text(
