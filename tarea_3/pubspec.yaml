@@ -62,6 +62,12 @@ flutter:
   assets:
     - assets/images/imagen1.png
     - assets/images/bali.jpg
+    - assets/images/day1.jpg
+    - assets/images/day2.jpg
+    - assets/images/day3.jpg
+    - assets/images/day4.jpg
+    - assets/images/day5.jpg
+
 
 
   #   - images/a_dot_burr.jpeg

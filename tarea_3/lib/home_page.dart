@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  height: 150,
+                  height: 250,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
               ),
               // para poder poner column o listview en stack hay que encerrarlas en positioned y anclarla a todos lados
               Positioned(
-                top: 64,
+                top: 180,
                 bottom: 0,
                 left: 0,
                 right: 0,
@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
                       height: 200,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 10,
+                        itemCount: 1,
                         itemBuilder: (BuildContext context, int index) {
                           return ItemActividad();
                         },
@@ -77,6 +77,7 @@ class HomePage extends StatelessWidget {
                         );
 
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        ScaffoldMessenger.of(context).hideCurrentSnackBar;
                       },
                       child: const Text(
                         "Start booking",
