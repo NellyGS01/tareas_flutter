@@ -23,7 +23,11 @@ class HomePage extends StatelessWidget {
                 child: Container(
                   height: 150,
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.green,
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/bali.jpg'),
+                          fit: BoxFit.cover)),
                 ),
               ),
               // para poder poner column o listview en stack hay que encerrarlas en positioned y anclarla a todos lados
@@ -62,17 +66,22 @@ class HomePage extends StatelessWidget {
                     MaterialButton(
                       onPressed: () {
                         final snackBar = SnackBar(
-                          content: const Text(
-                              'Puedes encontrar comida en sus cafeterías'),
+                          duration: const Duration(seconds: 1),
+                          content: const Text('Reservación en progreso'),
                           action: SnackBarAction(
                             label: 'Ok',
-                            onPressed: () {},
+                            onPressed: () {
+                              ScaffoldMessenger.of(context).hideCurrentSnackBar;
+                            },
                           ),
                         );
 
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
-                      child: Text("Start booking"),
+                      child: const Text(
+                        "Start booking",
+                        style: TextStyle(color: Colors.white),
+                      ),
                       color: Colors.red,
                     ),
                   ],

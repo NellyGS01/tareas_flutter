@@ -15,7 +15,7 @@ class ItemActividad extends StatelessWidget {
             width: 120,
             color: Colors.purple,
           ),
-          Text("Day 1", style: TextStyle(fontSize: 11)),
+          Text("Day 2", style: TextStyle(fontSize: 11)),
           Text("Bali mountains"),
         ],
       ),

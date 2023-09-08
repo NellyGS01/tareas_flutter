@@ -19,8 +19,43 @@ class InfoLugar extends StatelessWidget {
               leading:
                   const Icon(Icons.surfing, size: 48, color: Colors.indigo),
               title: TextTop("Balis beach"),
-              subtitle: Wrap(
-                children: [Text("***"), Text("4.1")],
+              subtitle: const Wrap(
+                children: [
+                  Row(
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            size: 15,
+                            color: Colors.yellow,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 15,
+                            color: Colors.yellow,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 15,
+                            color: Colors.yellow,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 15,
+                            color: Colors.yellow,
+                          ),
+                          Icon(
+                            Icons.star_border_outlined,
+                            size: 15,
+                            color: Colors.yellow,
+                          ),
+                        ],
+                      ),
+                      Text("4.1")
+                    ],
+                  )
+                ],
               ),
             ),
             // Datos del hotel
