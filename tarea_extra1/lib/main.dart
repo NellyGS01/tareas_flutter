@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tarea_extra1/intro_page.dart';
 import 'package:tarea_extra1/home_page.dart';
+import 'package:tarea_extra1/other_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       home: const IntroPage(),
       routes: {
-        '/homepage': (context) => const HomePage(),
+        '/homepage': (context) => const HomePage(), //página
+        '/otherpage': (context) => const OtherPage(), //página3
         '/intropage': (context) => const IntroPage(),
       },
     );
