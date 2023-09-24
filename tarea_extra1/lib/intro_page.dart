@@ -8,6 +8,7 @@ class IntroPage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text("INTRO PAGE"),
+          backgroundColor: Colors.blue,
         ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
@@ -15,9 +16,7 @@ class IntroPage extends StatelessWidget {
             const Align(
               alignment: AlignmentDirectional(0.00, 0.00),
               child: SizedBox(
-                child: Text(
-                  'Bienvenidos',
-                ),
+                child: Text('Bienvenidos', style: TextStyle(fontSize: 35)),
               ),
             ),
             Align(
@@ -36,21 +35,13 @@ class IntroPage extends StatelessWidget {
               alignment: AlignmentDirectional(0.00, 0.00),
               child: SizedBox(
                 height: 40,
-                child: Text(
-                  'Bienvenidos',
-                ),
+                child: Text('Bienvenidos', style: TextStyle(fontSize: 20)),
               ),
             ),
             Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/homepage');
-                  },
-                  child: const Text("Página 2"),
-                ),
                 ElevatedButton(
                   onPressed: () => showDialog<String>(
                     context: context,
@@ -75,8 +66,14 @@ class IntroPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  child: const Text('Página 3'),
-                )
+                  child: const Text('Página 2'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/homepage');
+                  },
+                  child: const Text("Página 3"),
+                ),
               ],
             )
           ],

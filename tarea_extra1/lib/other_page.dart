@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tarea_extra1/gradient_container.dart';
 //Pagina3
 
 const startAligment = Alignment.topCenter;
@@ -15,15 +16,9 @@ class _HomePageState extends State<OtherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("OTHER PAGE"),
+        title: const Text("PÁGINA 2"),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.blue, Colors.white],
-                begin: startAligment,
-                end: endAligment)),
-      ),
+      body: GradiantContainer.blue(),
     );
   }
 }
