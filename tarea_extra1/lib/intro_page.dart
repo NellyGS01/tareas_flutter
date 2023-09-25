@@ -75,6 +75,22 @@ class IntroPage extends StatelessWidget {
                   child: const Text("Página 3"),
                 ),
               ],
+            ),
+            Row(
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    height: 250,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/bali.jpg'),
+                            fit: BoxFit.cover)),
+                  ),
+                ),
+              ],
             )
           ],
         ));
