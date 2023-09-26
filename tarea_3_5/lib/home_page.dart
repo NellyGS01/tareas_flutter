@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
               children: [
                 GestureDetector(
                     child: Image.asset(
-                      'assets/images/bali1.jpg',
+                      'assets/images/bali2.jpg',
                       height: 250,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -94,7 +94,7 @@ class MyApp extends StatelessWidget {
                                           width: 10,
                                         ),
                                         Text(
-                                          '20 mins',
+                                          'Simple',
                                           style: TextStyle(
                                               fontSize: 12,
                                               color: Colors.white),
@@ -115,7 +115,7 @@ class MyApp extends StatelessWidget {
                                           width: 10,
                                         ),
                                         Text(
-                                          'Hello World',
+                                          'Affordable',
                                           style: TextStyle(
                                               fontSize: 12,
                                               color: Colors.white),
