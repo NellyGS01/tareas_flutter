@@ -1,57 +1,148 @@
 import 'package:flutter/material.dart';
+import 'package:tarea_3_5/info_page.dart';
 
-//pagina2
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-  @override
-  State<HomePage> createState() => _HomePageState();
+class Lista {
+  final String titulo;
+  final String contenido;
+  Lista(this.titulo, this.contenido);
 }
 
-class _HomePageState extends State<HomePage> {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key, required this.porhacer});
+
+  final List<Lista> porhacer;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("PÁGINA 3"),
-          backgroundColor: Colors.blue,
+          centerTitle: true,
+          backgroundColor: Colors.black,
+          title: const Text('Quick and Easy'),
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-              ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, '/cardpage'),
-                child: const Text("Card page"),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text("	(=`ω´=)"),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text("(；￣Д￣)"),
-              ),
-            ]),
-            Stack(
-              fit: StackFit.expand,
+        body: ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: porhacer.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Stack(
               children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Container(
-                    height: 250,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/bali.jpg'),
-                            fit: BoxFit.cover)),
-                  ),
-                ),
-                // para poder poner column o listview en stack hay que encerrarlas en positioned y anclarla a todos lados
+                GestureDetector(
+                    child: Image.asset(
+                      'assets/images/bali1.jpg',
+                      height: 250,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => InfoScreen(
+                                    lista: porhacer[index],
+                                  ))));
+                    }),
+                Positioned(
+                    bottom: 0,
+                    top: 180,
+                    child: Container(
+                        width: 410,
+                        color: Colors.black54,
+                        padding: const EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            Text(
+                              (porhacer[index].titulo),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                            ),
+                            Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: const Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Icon(
+                                          Icons.access_time_outlined,
+                                          color: Colors.white,
+                                          size: 15,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          '20 mins',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: const Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Icon(
+                                          Icons.account_balance_wallet_outlined,
+                                          color: Colors.white,
+                                          size: 15,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          '20 mins',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: const Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Icon(
+                                          Icons.money,
+                                          color: Colors.white,
+                                          size: 15,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          'Hello World',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ]),
+                          ],
+                        ))),
               ],
-            )
-          ],
+            );
+
+            //ListTile(
+            //leading: const Icon(Icons.ac_unit),
+            //title: Text('hola'),
+            //title: (Text(porhacer[index].titulo)),
+            /*onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => InfoScreen(
+                              lista: porhacer[index],
+                            ))));
+              },*/
+            //);
+          },
         ));
   }
 }
